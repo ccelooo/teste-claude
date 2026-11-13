@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <!-- Faz a página se ajustar bem à tela do celular -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meu primeiro teste</title>
+  <style>
+    /* Aqui fica o visual (CSS) da página */
+    body {
+      font-family: system-ui, sans-serif;
+      background: #fff7ed;
+      color: #3b2a1a;
+      margin: 0;
+      padding: 24px 16px;
+      text-align: center;
+    }
+    h1 { color: #c2410c; }
+    button {
+      background: #c2410c;
+      color: white;
+      border: none;
+      border-radius: 999px;
+      padding: 14px 28px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+    #contador { font-size: 48px; font-weight: bold; margin: 16px 0; }
+  </style>
+</head>
+<body>
+  <!-- Aqui fica o conteúdo (HTML) da página -->
+  <h1>Olá, mundo! 👋</h1>
+  <p>Esta é a minha primeira página, criada para testar o GitHub.</p>
+
+  <p>Você clicou:</p>
+  <div id="contador">0</div>
+  <button id="botao">Clique aqui</button>
+
+  <script>
+    // Aqui fica o comportamento (JavaScript) da página
+    let cliques = 0;
+    const botao = document.getElementById("botao");
+    const contador = document.getElementById("contador");
+
+    botao.addEventListener("click", function () {
+      cliques = cliques + 1;
+      contador.textContent = cliques;
+    });
+  </script>
+</body>
+</html>
