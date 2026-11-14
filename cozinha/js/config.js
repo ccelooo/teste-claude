@@ -6,10 +6,9 @@ const CONFIG = {
   nomeNegocio: "Delícias do Plin",
   slogan: "O melhor da culinária, sob encomenda",
 
-  // WhatsApp que RECEBE os pedidos.
+  // WhatsApp que RECEBE os pedidos (Delícias do Plin).
   // Formato: 55 + DDD + número, só números, sem espaços.
-  // ⚠️ NÚMERO DE TESTE — troque pelo número real do seu tio.
-  whatsappDestino: "5585999999999",
+  whatsappDestino: "5585999820373",
 
   // Tipos de refeição que o cliente pode escolher
   tiposRefeicao: ["Almoço", "Jantar", "Evento", "Ceia de Natal"],

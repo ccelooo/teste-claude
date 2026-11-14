@@ -455,6 +455,16 @@ function aoClicarCheckout() {
 }
 
 // ---------- Mensagem do WhatsApp ----------
+// Número do pedido: dia+mês e hora+minuto do envio. Ex.: 14/11 às 15:32 -> #1411-1532
+function gerarNumeroPedido() {
+  const agora = new Date();
+  const doisDigitos = (n) => String(n).padStart(2, "0");
+  return (
+    doisDigitos(agora.getDate()) + doisDigitos(agora.getMonth() + 1) + "-" +
+    doisDigitos(agora.getHours()) + doisDigitos(agora.getMinutes())
+  );
+}
+
 function montarMensagem() {
   const { itens, opcao, total } = calcularTotais();
   const whatsapp = $("whatsapp").value;
@@ -463,7 +473,7 @@ function montarMensagem() {
   const obs = $("obs").value.trim();
 
   const linhas = [
-    `*Novo pedido* – ${$("nome").value.trim()}`,
+    `*Pedido #${gerarNumeroPedido()}* – ${$("nome").value.trim()}`,
     `WhatsApp: ${whatsapp}`,
     `Telefone: ${telefone}`,
     `Refeição: ${$("tipo").value} – ${formatarData($("data").value)} – ${pessoas} ${pessoas === 1 ? "pessoa" : "pessoas"}`,

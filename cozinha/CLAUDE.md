@@ -24,7 +24,8 @@ servidor, sem banco de dados. Nunca usar a palavra "estimado".
 
 ## Negócio
 - Nome: **Delícias do Plin** (D maiúsculo, "do" minúsculo, Plin com N). Instagram @deliciasdoplin.
-- WhatsApp real que aparece nos PDFs: (85) 99982-0373 — AINDA NÃO usado no site (usuário pediu número de teste).
+- WhatsApp do tio (destino dos pedidos): 5585999820373 — já configurado em js/config.js.
+  O usuário digitou "+55 85 9982-0373" (sem o 9); usei o número com 9 dígitos, igual aos PDFs.
 - Tudo sob encomenda: NÃO existe "esgotado" (recurso removido).
 - Fontes: PDFs "Cardápio Delícias do Plin 2026" e "Cardápio de Natal 2026" (enviados na conversa).
 
@@ -47,6 +48,7 @@ servidor, sem banco de dados. Nunca usar a palavra "estimado".
   (4 a 5) são ESTIMATIVAS — confirmar com o tio.
 
 ## Decisões tomadas
+- Mensagem começa com "*Pedido #DDMM-HHMM* – Nome" (número = dia/mês e hora/minuto do envio).
 - SEM pagamento no site (sem Pix, QR Code, planilha ou API). Fluxo final: "Enviar pedido" abre o
   WhatsApp do cliente com a mensagem do pedido; o tio negocia 50%/50% e confirma usando respostas
   rápidas e etiquetas do WhatsApp Business. Volume baixo (~10 pedidos/15 dias).
