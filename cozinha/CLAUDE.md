@@ -82,15 +82,16 @@ servidor, sem banco de dados. Nunca usar a palavra "estimado".
 
 ## GitHub
 - Usuário: `ccelooo`. Repo de treino: `ccelooo/teste-claude` (Pages ligado).
-- Este protótipo está provisoriamente em `teste-claude/cozinha/` (NÃO enviado ainda).
-  Será movido para um repositório próprio quando o usuário criar.
+- Protótipo em `teste-claude/cozinha/`, nas branches `prototipo-cardapio` (backup) e `main` (publicada
+  no Pages para teste). Mover para um repositório próprio na etapa 6.
 
 ## Etapas
 1. ✅ Ambiente verificado (tudo no navegador, nada instalado no notebook).
 2. ✅ GitHub aprendido (conta, repo de teste, Pages funcionando).
 3. 🔄 Protótipo — cardápio REAL, logo, cores, fotos e layout de app aplicados. Próximo: ajustes do
    usuário e configurar o WhatsApp de destino.
-4. Testar envio para o WhatsApp.
+4. ✅ Envio para o WhatsApp testado no celular e funcionando (número com 9 dígitos OK).
+   Site de teste no ar: https://ccelooo.github.io/teste-claude/cozinha/ (branch main do teste-claude).
 5. Cardápio real, logo e cores da marca.
 6. Publicar no repositório definitivo (GitHub Pages).
 7. Ensinar manutenção (preço, novo prato, esgotado).
