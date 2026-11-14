@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Delícias do Plin</title>
+  <meta name="description" content="Comida caseira sob encomenda em Fortaleza. Monte seu pedido e envie pelo WhatsApp.">
+  <!-- Fontes da marca (Google Fonts): Kaushan Script = letra cursiva do logo; Montserrat = "Sabores e Comidas" -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Montserrat:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+
+  <!-- ================= TOPO ================= -->
+  <header class="topo">
+    <div class="topo-conteudo">
+      <!-- Na tela inicial: logo. Nas outras telas: botão de voltar + título -->
+      <button type="button" class="topo-voltar" id="topo-voltar" aria-label="Voltar" hidden>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+      </button>
+      <a class="marca" id="marca" href="#" aria-label="Delícias do Plin – início">
+        <img src="img/logo.png" alt="Delícias do Plin – Sabores e Comidas" width="64" height="59">
+      </a>
+      <div class="topo-titulo" id="topo-titulo" hidden></div>
+      <button type="button" class="botao-sacola-topo" id="botao-sacola-topo" aria-label="Abrir sacola">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8h12l-1 12H7L6 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+        <span class="contador" data-contador hidden>0</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="pagina">
+
+    <!-- ================= TELA INICIAL ================= -->
+    <section id="tela-inicio">
+      <p class="saudacao">Comida caseira <strong>sob encomenda</strong> em Fortaleza</p>
+
+      <!-- Banner da Ceia de Natal -->
+      <div class="banner">
+        <div class="banner-texto">
+          <span class="selo">Encomendas até 21/12</span>
+          <h1 class="script">Ceia de Natal</h1>
+          <p>Kits completos para até 30 pessoas, pratos e sobremesas.</p>
+          <button type="button" class="botao-banner" data-ir="natal">Ver cardápio de Natal
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+        </div>
+        <img class="banner-foto" src="img/pratos/natal-kit-3.jpg" alt="Pernil assado da ceia de Natal">
+      </div>
+
+      <!-- Categorias em círculos -->
+      <nav class="categorias" id="categorias" aria-label="Categorias do cardápio"></nav>
+
+      <!-- Destaques de Natal -->
+      <div class="secao-cabecalho" id="secao-natal">
+        <h2>Destaques de Natal</h2>
+        <button type="button" class="ver-todos" data-ir="natal">Ver todos
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+      </div>
+      <div class="vitrine" id="natal-destaques"></div>
+      <button type="button" class="botao-ver-natal" id="botao-ver-natal" data-ir="natal">Ver todas as opções de Natal</button>
+
+      <!-- Cardápio 2026 -->
+      <div class="secao-cabecalho secao-cardapio">
+        <div>
+          <h2>Cardápio 2026</h2>
+          <p class="secao-sub">Tudo preparado sob encomenda</p>
+        </div>
+      </div>
+      <div id="lista-pratos"></div>
+    </section>
+
+    <!-- ================= TELA AVULSA: CARDÁPIO DE NATAL ================= -->
+    <section id="tela-natal" hidden>
+      <div class="banner banner-natal">
+        <div class="banner-texto">
+          <span class="selo">Encomendas até 21/12</span>
+          <h1 class="script">Cardápio de Natal 2026</h1>
+          <p>Reserva com 50% de entrada. Retirada no local ou entrega.</p>
+        </div>
+      </div>
+      <nav class="chips" id="chips-natal" aria-label="Seções do cardápio de Natal"></nav>
+      <div id="lista-natal"></div>
+    </section>
+
+    <!-- ================= CHECKOUT: ETAPAS ================= -->
+    <ol class="etapas" id="etapas" hidden>
+      <li class="feita">Sacola</li>
+      <li id="etapa-ocasiao">Ocasião</li>
+      <li id="etapa-dados">Finalizar</li>
+    </ol>
+
+    <!-- ================= TELA: OCASIÃO ================= -->
+    <section id="tela-ocasiao" hidden>
+      <h2 class="titulo-tela">Sobre a ocasião</h2>
+      <div class="cartao">
+        <div class="campo" data-campo="tipo">
+          <label for="tipo">Tipo de refeição <span class="obrig">*</span></label>
+          <select id="tipo"><option value="">Selecione uma opção</option></select>
+          <div class="msg-erro">Escolha o tipo de refeição.</div>
+        </div>
+        <div class="linha-dupla">
+          <div class="campo" data-campo="data">
+            <label for="data">Data <span class="obrig">*</span></label>
+            <input id="data" type="date">
+            <div class="msg-erro">Escolha a data.</div>
+          </div>
+          <div class="campo" data-campo="pessoas">
+            <label for="pessoas">Nº de pessoas <span class="obrig">*</span></label>
+            <input id="pessoas" type="number" inputmode="numeric" min="1" placeholder="Ex.: 10">
+            <div class="msg-erro">Informe quantas pessoas.</div>
+          </div>
+        </div>
+        <div class="campo">
+          <label for="obs">Observações</label>
+          <textarea id="obs" rows="3" placeholder="Ex.: horário de entrega, restrições alimentares, sem cebola..."></textarea>
+        </div>
+      </div>
+      <p class="nota">Encomendas com 24h de antecedência (48h para grandes quantidades).</p>
+    </section>
+
+    <!-- ================= TELA: FINALIZAR ================= -->
+    <section id="tela-dados" hidden>
+      <div class="cartao resumo">
+        <div class="resumo-topo">
+          <h2>Seu pedido</h2>
+          <button type="button" class="link" id="editar-sacola">Editar</button>
+        </div>
+        <p class="resumo-ocasiao" id="resumo-ocasiao"></p>
+        <div id="resumo-itens"></div>
+        <div id="resumo-entrega"></div>
+        <div class="resumo-total"><span>Total</span><span id="resumo-total">R$ 0,00</span></div>
+      </div>
+
+      <h2 class="titulo-tela">Entrega ou retirada</h2>
+      <div class="cartao">
+        <div class="campo" data-campo="entrega">
+          <div id="opcoes-entrega" class="opcoes-entrega" role="radiogroup" aria-label="Entrega ou retirada"></div>
+          <div class="msg-erro">Escolha entre entrega ou retirada.</div>
+        </div>
+        <div id="campos-endereco" hidden>
+          <div class="campo" data-campo="endereco">
+            <label for="endereco">Rua e número <span class="obrig">*</span></label>
+            <input id="endereco" type="text" autocomplete="street-address" placeholder="Ex.: Rua das Flores, 123">
+            <div class="msg-erro">Informe a rua e o número.</div>
+          </div>
+          <div class="campo" data-campo="bairro">
+            <label for="bairro">Bairro <span class="obrig">*</span></label>
+            <input id="bairro" type="text">
+            <div class="msg-erro">Informe o bairro.</div>
+          </div>
+          <div class="campo">
+            <label for="complemento">Complemento / ponto de referência</label>
+            <input id="complemento" type="text" placeholder="Ex.: apto 202, perto da padaria">
+          </div>
+        </div>
+      </div>
+
+      <h2 class="titulo-tela">Seus dados</h2>
+      <div class="cartao">
+        <div class="campo" data-campo="nome">
+          <label for="nome">Nome completo <span class="obrig">*</span></label>
+          <input id="nome" type="text" autocomplete="name">
+          <div class="msg-erro">Informe seu nome completo.</div>
+        </div>
+        <div class="campo" data-campo="whatsapp">
+          <label for="whatsapp">WhatsApp <span class="obrig">*</span></label>
+          <input id="whatsapp" type="tel" inputmode="numeric" placeholder="(85) 99999-9999" autocomplete="tel">
+          <div class="msg-erro">Informe um WhatsApp válido com DDD.</div>
+        </div>
+        <div class="campo" data-campo="telefone">
+          <label for="telefone">Telefone</label>
+          <input id="telefone" type="tel" inputmode="numeric" placeholder="(85) 3333-3333" disabled>
+          <label class="opcao">
+            <input id="mesmo-numero" type="checkbox" checked>
+            O telefone é o mesmo número do WhatsApp
+          </label>
+          <div class="msg-erro">Informe um telefone válido com DDD.</div>
+        </div>
+      </div>
+      <p class="nota">Ao enviar, abrimos o WhatsApp com o seu pedido pronto. A reserva é confirmada por lá, com o pagamento de 50% do valor.</p>
+    </section>
+  </main>
+
+  <!-- ================= BARRA DA SACOLA (telas do cardápio) ================= -->
+  <div class="barra-sacola" id="barra-sacola" hidden>
+    <button type="button" class="barra-sacola-info" data-abrir-sacola>
+      <span class="icone-sacola">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8h12l-1 12H7L6 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+        <span class="contador" data-contador>0</span>
+      </span>
+      <span class="barra-textos">
+        <small>Ver sacola</small>
+        <strong data-total>R$ 0,00</strong>
+      </span>
+    </button>
+    <button type="button" class="botao-avancar" data-avancar>Avançar
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </button>
+  </div>
+
+  <!-- ================= MENU INFERIOR ================= -->
+  <nav class="menu-inferior" id="menu-inferior" aria-label="Navegação">
+    <button type="button" class="menu-item ativo" data-ir="inicio" id="menu-inicio">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11l8-7 8 7v9h-5v-6H9v6H4z"/></svg>
+      Início
+    </button>
+    <button type="button" class="menu-sacola" data-abrir-sacola aria-label="Sacola">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8h12l-1 12H7L6 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+      <span class="contador" data-contador hidden>0</span>
+    </button>
+    <button type="button" class="menu-item" data-ir="natal" id="menu-natal">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l5 7h-3l4 6h-4l3 4H7l3-4H6l4-6H7z"/></svg>
+      Natal
+    </button>
+  </nav>
+
+  <!-- ================= BARRA DO CHECKOUT ================= -->
+  <div class="barra-checkout" id="barra-checkout" hidden>
+    <div class="barra-textos">
+      <small id="checkout-qtd">0 itens</small>
+      <strong data-total>R$ 0,00</strong>
+    </div>
+    <button type="button" class="botao-avancar" id="botao-checkout">Avançar</button>
+  </div>
+
+  <!-- ================= SACOLA (painel que sobe de baixo) ================= -->
+  <div class="sacola-fundo" id="sacola-fundo" hidden></div>
+  <aside class="sacola" id="sacola" aria-label="Sua sacola" hidden>
+    <div class="sacola-alca" aria-hidden="true"></div>
+    <div class="sacola-topo">
+      <h2>Sua sacola</h2>
+      <button type="button" class="fechar" id="fechar-sacola" aria-label="Fechar sacola">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <div class="sacola-itens" id="sacola-itens"></div>
+    <div class="sacola-rodape">
+      <div class="resumo-total"><span>Total</span><span data-total>R$ 0,00</span></div>
+      <button type="button" class="botao-avancar largo" data-avancar>Avançar
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+      <button type="button" class="link centro" id="continuar-escolhendo">Continuar escolhendo</button>
+    </div>
+  </aside>
+
+  <!-- Aviso rápido ("Adicionado à sacola") -->
+  <div class="aviso-flutuante" id="aviso-flutuante" role="status" aria-live="polite"></div>
+
+  <!-- A ordem importa: primeiro os dados, depois a lógica -->
+  <script src="js/config.js"></script>
+  <script src="js/cardapio.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
